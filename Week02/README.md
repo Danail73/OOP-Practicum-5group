@@ -10,7 +10,7 @@
 * Source.o - машинен код
 * Source.exe - изпълним машинен код
 
-![](Week02/resources/compilation-process.png)
+![](/Week02/resources/compilation-process.png)
 
 ### Компилация извън IDE-то (чрез g++ компилатора)
 ```c++
@@ -69,7 +69,7 @@ message.o: message.cpp
 
 Поток (stream) - последователност от байтове данни влизащи в и излизащи от програмата.
 
-![](Week02/resources/streams.png)
+![](/Week02/resources/streams.png)
 
 Стъпки за работа с поток:
 * Създаване на поток
@@ -82,7 +82,7 @@ message.o: message.cpp
 * входни потоци - istream
 * изходни потоци - ostream
 
-![](Week02/resources/hierarchy.png)
+![](/Week02/resources/hierarchy.png)
 
 Тези потоци се намират във `fstream`
 
