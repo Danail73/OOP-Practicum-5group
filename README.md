@@ -13,6 +13,3 @@
 ---
 ## Допълнителни материали
 - [**Работа с файлове**](https://github.com/alexsrebrov/OOP-Practicum-5group/tree/main/FileHandling)
-
-
-dummy
