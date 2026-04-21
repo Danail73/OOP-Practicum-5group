@@ -267,10 +267,104 @@ int main() {
 ```
 
 ### 11. Какво ще се отпечата на конзолата
+```c++
+class D 
+{
+    int num;
+
+public:
+    D() {
+        std::cout << "D()" << std::endl;
+        num = 2;
+    }
+    
+    D(int num) {
+        std::cout << "D(num)" << std::endl;
+        this->num = num;
+    }
+
+    D& operator*=(int coef) {
+        num *= coef;
+        return *this;
+    }
+
+    int getNum() const {
+        return num;
+    }
+
+    ~D() {
+        std::cout << "~D()" << std::endl;
+    }
+};
+
+D operator*(D& obj, int coef) {
+    D temp = obj;
+    temp *= coef;
+    return temp;
+}
+
+int DPowerOfTwo()
+{
+    static D result(3);
+    result *= 2;
+    return result.getNum();
+}
+
+int main()
+{
+    std::cout << DPowerOfTwo() << std::endl;
+    std::cout << DPowerOfTwo() << std::endl;
+    std::cout << DPowerOfTwo() << std::endl;
+}
+```
+
 ### 12. Какво ще се отпечата на конзолата
+```c++
+int main() {
+    std::string s = "hello";
+    std::string t = std::move(s);
+    std::cout << s << " " << t << std::endl;
+}
+```
+
 ### 13. Какво ще се отпечата на конзолата
+```c++
+int main() {
+    std::unique_ptr<A> p1 = std::make_unique<A>();
+    std::unique_ptr<A> p2 = std::move(p1);
+
+    if (!p1) std::cout << "empty\n";
+}
+```
+
 ### 14. Какво ще се отпечата на конзолата
+```c++
+struct E {
+	std::unique_ptr<A> p;
+
+	E() : p(std::make_unique<A>()) {}
+
+	E(E&& other) noexcept : p(std::move(other.p)) 
+	{
+		std::cout << "M.C E()" << std::endl;
+	}
+};
+
+int main() {
+	E e1;
+	E e2 = e1;
+	E e3 = std::move(e1);
+}
+```
 ### 15. Какво ще се отпечата на конзолата
-### 16. Какво ще се отпечата на конзолата
-### 17. Какво ще се отпечата на конзолата
-### 18. Какво ще се отпечата на конзолата
+```c++
+int main() {
+    std::shared_ptr<A> p1 = std::make_shared<A>();
+    {
+        std::shared_ptr<A> p2 = p1;
+        std::cout << p1.use_count() << std::endl;
+    }
+    std::cout << p1.use_count() << std::endl;
+}
+
+```
