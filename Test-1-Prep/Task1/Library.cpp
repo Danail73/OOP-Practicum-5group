@@ -12,7 +12,7 @@ void Library::free() {
     delete[] books;
 }
 
-void Library::copyFrom(const Library &other) {
+void Library::copyFrom(const Library& other) {
     id = other.id;
     name = new char[strlen(other.name) + 1];
     strcpy(name, other.name);
@@ -32,7 +32,7 @@ void Library::copyFrom(const Library &other) {
     }
 }
 
-void Library::moveFrom(Library &&other) noexcept {
+void Library::moveFrom(Library&& other) noexcept {
     id = other.id;
     name = other.name;
     readers = other.readers;
@@ -71,7 +71,7 @@ void Library::resizeBooks() {
     books = newBooks;
 }
 
-Library::Library(const char *name) : id(idCounter++), readersCount(0), booksCount(0), readersCapacity(2), booksCapacity(2)
+Library::Library(const char* name) : id(idCounter++), readersCount(0), booksCount(0), readersCapacity(2), booksCapacity(2)
 {
     this->name = new char[strlen(name) + 1];
     strcpy(this->name, name);
@@ -79,15 +79,15 @@ Library::Library(const char *name) : id(idCounter++), readersCount(0), booksCoun
     books = new Book*[booksCapacity];
 }
 
-Library::Library(const Library &other) {
+Library::Library(const Library& other) {
     copyFrom(other);
 }
 
-Library::Library(Library &&other) noexcept {
+Library::Library(Library&& other) noexcept {
     moveFrom(std::move(other));
 }
 
-Library &Library::operator=(const Library &other) {
+Library& Library::operator=(const Library& other) {
     if (this != &other) {
         free();
         copyFrom(other);
@@ -95,7 +95,7 @@ Library &Library::operator=(const Library &other) {
     return *this;
 }
 
-Library &Library::operator=(Library &&other) noexcept {
+Library& Library::operator=(Library&& other) noexcept {
     if (this != &other) {
         free();
         moveFrom(std::move(other));
@@ -108,7 +108,7 @@ Library::~Library() {
     free();
 }
 
-Library &Library::operator+=(Reader *reader)
+Library& Library::operator+=(Reader* reader)
 {
     if (readersCount == readersCapacity) {
         resizeReaders();
@@ -117,7 +117,7 @@ Library &Library::operator+=(Reader *reader)
     return *this;
 }
 
-Library &Library::operator+=(Book *book)
+Library& Library::operator+=(Book* book)
 {
     if (booksCount == booksCapacity) {
         resizeBooks();
@@ -126,7 +126,7 @@ Library &Library::operator+=(Book *book)
     return *this;
 }
 
-Library &Library::operator-=(Reader *reader)
+Library& Library::operator-=(Reader* reader)
 {
     for (size_t i = 0; i < readersCount; i++) {
         if (readers[i] == reader) {
@@ -141,7 +141,7 @@ Library &Library::operator-=(Reader *reader)
     return *this;
 }
 
-Library &Library::operator-=(Book *book)
+Library& Library::operator-=(Book* book)
 {
     for (size_t i = 0; i < booksCount; i++) {
         if (books[i] == book) {
@@ -209,7 +209,7 @@ void Library::findBooksByReaders(int minReaders, int maxReaders) const {
     }
 }
 
-void Library::findBooksByAuthor(const char *author) const {
+void Library::findBooksByAuthor(const char* author) const {
     for (size_t i = 0; i < booksCount; i++) {
         if (strcmp(books[i]->getAuthor(), author) == 0) {
             std::cout << *books[i] << std::endl;
@@ -217,7 +217,7 @@ void Library::findBooksByAuthor(const char *author) const {
     }
 }
 
-void Library::findBooksByName(const char *name) const {
+void Library::findBooksByName(const char* name) const {
     for (size_t i = 0; i < booksCount; i++) {
         if (strcmp(books[i]->getName(), name) == 0) {
             std::cout << *books[i] << std::endl;
