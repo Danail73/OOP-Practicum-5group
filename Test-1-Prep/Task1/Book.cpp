@@ -6,7 +6,7 @@ void Book::free()
     delete[] author;
 }
 
-void Book::copyFrom(const Book &other)
+void Book::copyFrom(const Book& other)
 {
     name = new char[strlen(other.name) + 1];
     strcpy(name, other.name);
@@ -18,7 +18,7 @@ void Book::copyFrom(const Book &other)
     pagesCnt = other.pagesCnt;
 }
 
-void Book::moveFrom(Book &&other)
+void Book::moveFrom(Book&& other)
 {
     name = other.name;
     author = other.author;
@@ -29,7 +29,7 @@ void Book::moveFrom(Book &&other)
     other.author = nullptr;
 }
 
-Book::Book(const char *name, const char *author, int pagesCnt)
+Book::Book(const char* name, const char* author, int pagesCnt)
 {
     this->name = new char[strlen(name) + 1];
     strcpy(this->name, name);
@@ -41,17 +41,17 @@ Book::Book(const char *name, const char *author, int pagesCnt)
     this->readersCnt = 0;
 }
 
-Book::Book(const Book &other)
+Book::Book(const Book& other)
 {
     copyFrom(other);
 }
 
-Book::Book(Book &&other) noexcept
+Book::Book(Book&& other) noexcept
 {
     moveFrom(std::move(other));
 }
 
-Book &Book::operator=(const Book &other)
+Book& Book::operator=(const Book& other)
 {
     if (this != &other)
     {
@@ -61,7 +61,7 @@ Book &Book::operator=(const Book &other)
     return *this;
 }
 
-Book &Book::operator=(Book &&other) noexcept
+Book& Book::operator=(Book&& other) noexcept
 {
     if (this != &other)
     {
@@ -76,17 +76,17 @@ Book::~Book()
     free();
 }
 
-auto Book::operator<=>(const Book &other) const
+auto Book::operator<=>(const Book& other) const
 {
     return readersCnt <=> other.readersCnt;
 }
 
-bool Book::operator==(const Book &other) const
+bool Book::operator==(const Book& other) const
 {
     return readersCnt == other.readersCnt;
 }
 
-Book &Book::operator++()
+Book& Book::operator++()
 {
     ++readersCnt;
     return *this;
@@ -109,17 +109,17 @@ int Book::getPagesCnt() const
     return pagesCnt;
 }
 
-const char *Book::getName() const
+const char* Book::getName() const
 {
     return name;
 }
 
-const char *Book::getAuthor() const
+const char* Book::getAuthor() const
 {
     return author;
 }
 
-std::ostream &operator<<(std::ostream &os, const Book &book)
+std::ostream& operator<<(std::ostream& os, const Book& book)
 {
     os << "Name: " << book.name << ", Author: " << book.author << ", Pages: " << book.pagesCnt << ", Readers: " << book.readersCnt;
     return os;
