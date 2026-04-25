@@ -20,5 +20,5 @@
 - **Подготовка за Контролно 1**
     1. [Примерни снипети за Контрлно 1](https://github.com/alexsrebrov/OOP-Practicum-5group/tree/main/Week10/snippets.md)
     1. [Примерни задачи за Контролно 1](https://github.com/alexsrebrov/OOP-Practicum-5group/tree/main/Week10/Tasks)
-    1. [Консултация за Контрлно 1](https://github.com/alexsrebrov/OOP-Practicum-5group/tree/main/Тest-1-Пrep)
+    1. [Консултация за Контрлно 1](https://github.com/alexsrebrov/OOP-Practicum-5group/tree/main/Тest-1-Prep)
 
